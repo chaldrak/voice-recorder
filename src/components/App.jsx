@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 import Empty from "./Empty";
+import Footer from "./Footer";
 
 const Audio = ({ url }) => {
   if (!url) {
@@ -37,14 +38,17 @@ const App = () => {
   };
 
   return (
-    <div className="w-[400px] h-full flex flex-col items-center justify-center">
-      <h1 className="text-3xl font-bold pb-5">Voice Recorder</h1>
-      <div className="w-full h-2/3 bg-purple-900 rounded-xl flex flex-col items-center pt-5">
-        <AudioRecorder
-          onRecordingComplete={(blob) => addAudioElement(blob)}
-          recorderControls={recorderControls}
-        />
-        {media.length > 0 ? <Records /> : <Empty />}
+    <div className="w-80 md:w-[400px] h-full">
+      <div className="relative w-full h-full flex flex-col items-center justify-center">
+        <h1 className="text-3xl font-bold pb-5">Voice Recorder</h1>
+        <div className="w-full h-2/3 bg-purple-900 rounded-xl flex flex-col items-center pt-5">
+          <AudioRecorder
+            onRecordingComplete={(blob) => addAudioElement(blob)}
+            recorderControls={recorderControls}
+          />
+          {media.length > 0 ? <Records /> : <Empty />}
+        </div>
+        <Footer />
       </div>
     </div>
   );
